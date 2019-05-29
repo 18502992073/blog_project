@@ -1,0 +1,11 @@
+import tkinter
+root = tkinter.Tk()
+label1 = tkinter.Label(root, text='aaa', bg='red', height=3)
+label1.grid(row=1, column=1)
+label2 = tkinter.Label(root, text='bbb', bg='orange')
+label2.grid(row=2, column=2)
+label3 = tkinter.Label(root, text='ccc', bg='blue')
+label3.grid(row=3, column=3)
+label4 = tkinter.Label(root, text='ddd', bg='green')
+label4.grid(row=1, column=2, columnspan=2, stick=tkinter.S)
+root.mainloop()

@@ -1,0 +1,6 @@
+name = input("请输入姓名:")
+sex = input("请输入性别:")
+age = input("请输入年龄:")
+mark = input("请输入成绩:")
+print("{}的年龄是{}，性别是{}，成绩是{}.".format(name,age,sex,mark))
+print(name + "的年龄是" + age + "，性别是" + sex + "，成绩是" + mark + ".")
