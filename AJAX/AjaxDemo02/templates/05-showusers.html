@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/js/jquery-1.11.3.js"></script>
+    <script src="../static/js/common.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+            var xhr = createXhr();
+            xhr.open("get","/05-users",true);
+            xhr.onreadystatechange=function () {
+                if (xhr.readyState===4 && xhr.status===200){
+                    var res_txt = xhr.responseText;
+                    var users = res_txt.split("|");
+                    var html = "";
+                    for (var i=0; i<users.length;i++){
+                        var u = users[i].split("_");
+                        html += "<tr>";
+                            html += "<td>"+u[1]+"</td>";
+                            html += "<td>"+u[2]+"</td>";
+                            html += "<td>"+u[3]+"</td>";
+                        html += "</tr>";
+                    }
+                }
+            };
+            xhr.send(null);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">显示</button>
+    <table border="1" width="350">
+        <tr>
+            <td>姓名</td>
+            <td>密码</td>
+            <td>邮箱</td>
+        </tr>
+        <tbody id="content"></tbody>
+    </table>
+</body>
+</html>
