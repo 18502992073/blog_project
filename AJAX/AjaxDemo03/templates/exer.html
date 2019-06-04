@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../static/js/jquery-1.11.3.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url:"/exer-server1",
+                type:"get",
+                async:false,
+                dataType:"json",
+                success:function (data) {
+                    var html="";
+                    for (var i=0;i<data.length;i++){
+                        html += "<option>"+data[i].pname+"</option>";
+                    }
+                    $("#p").html(html);
+                    $("#c").html("<option>东城区</option>")
+                }
+            });
+
+            $("#p").change(function () {
+                $.ajax({
+                    url:"/exer-server2",
+                    type:"get",
+                    data:"pname="+$("#p").val(),
+                    async:true,
+                    dataType:"json",
+                    success:function (data) {
+                        var html="";
+                        for (var i=0;i<data.length;i++){
+                            html += "<option>"+data[i].cname+"</option>";
+                        }
+                        $("#c").html(html);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <select id="p"></select>
+    <select id="c"></select>
+</body>
+</html>
