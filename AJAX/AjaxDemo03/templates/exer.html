@@ -5,7 +5,7 @@
     <title>Title</title>
     <script src="../static/js/jquery-1.11.3.js"></script>
     <script>
-        $(function () {
+        function getprovince() {
             $.ajax({
                 url:"/exer-server1",
                 type:"get",
@@ -17,31 +17,38 @@
                         html += "<option>"+data[i].pname+"</option>";
                     }
                     $("#p").html(html);
-                    $("#c").html("<option>东城区</option>")
                 }
             });
+        }
 
-            $("#p").change(function () {
-                $.ajax({
-                    url:"/exer-server2",
-                    type:"get",
-                    data:"pname="+$("#p").val(),
-                    async:true,
-                    dataType:"json",
-                    success:function (data) {
-                        var html="";
-                        for (var i=0;i<data.length;i++){
-                            html += "<option>"+data[i].cname+"</option>";
-                        }
-                        $("#c").html(html);
+        function getcity() {
+            $.ajax({
+                url:"/exer-server2",
+                type:"get",
+                data:"pname="+$("#p").val(),
+                async:true,
+                dataType:"json",
+                success:function (data) {
+                    var html="";
+                    for (var i=0;i<data.length;i++){
+                        html += "<option>"+data[i].cname+"</option>";
                     }
-                })
+                    $("#c").html(html);
+                }
+            });
+        }
+
+        $(function () {
+            getprovince();
+            getcity();
+            $("#p").change(function () {
+                getcity();
             })
         })
     </script>
 </head>
 <body>
-    <select id="p"></select>
-    <select id="c"></select>
+    <select id="p" style="height: 24px"></select>
+    <select id="c" style="height: 24px"></select>
 </body>
 </html>
