@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/python_net/project2" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/python_net/project2/httpserver" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/python_net/project2/webframe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/django/day02" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.5.2 (/usr/bin/python3.5)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
